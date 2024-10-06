@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(name = "ProductList", url = "http://localhost:8080/products")
 public interface InventoryServiceClient {
     @GetMapping("/product")
-    public String getProducts();
+    public String getAllProducts();
 
-    @PostMapping("/product")
+    @GetMapping("/product/{id}")
+    public Product getProductById(@PathVariable long id);
+
+/*    @PostMapping("/product")
     public String addDetails(@RequestBody Inventory inventory);
 
     @PutMapping("/product/{id}")
@@ -19,5 +22,5 @@ public interface InventoryServiceClient {
 
     @PostMapping("/product/{id}")
     public String deleteDetails(@PathVariable long id);
-
+*/
 }
